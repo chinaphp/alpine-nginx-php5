@@ -64,9 +64,8 @@ RUN  apk add --update \
         php5-bcmath \
         && \
 
-# 从国内镜像安装composer，并配置成默认从国内镜像安装composer包
-RUN php -r "readfile('http://install.phpcomposer.com/installer');" | php -- --install-dir=/bin/ --filename=composer
-RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
+    chmod +x /usr/local/bin/composer;
 
 
 # 软件包参数配置
@@ -102,7 +101,7 @@ WORKDIR /apps
 VOLUME /apps
 
 
-#RUN rm /etc/nginx/nginx.conf
+RUN rm /etc/nginx/nginx.conf
 
 ADD conf/nginx.conf /etc/nginx/nginx.conf
 ADD conf/default.conf /etc/nginx/default.d/default.conf
