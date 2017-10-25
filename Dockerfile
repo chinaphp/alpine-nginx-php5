@@ -15,10 +15,9 @@ RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 RUN echo $TIMEZONE > /etc/timezone
 
 
-RUN apk --update add --no-cache --update \
-	nginx \
-	git \
-	curl \
+# 软件包安装
+RUN apk update
+RUN apk add php5 \
 	php5-fpm \
 	php5-opcache \
 	php5-intl \
@@ -47,6 +46,7 @@ RUN apk --update add --no-cache --update \
     php5-ctype \
     php5-phar \
     php5-redis@testing \
+    php5-xdebug@community \
     openssl
 
 # 从国内镜像安装composer，并配置成默认从国内镜像安装composer包
