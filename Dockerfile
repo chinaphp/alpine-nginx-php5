@@ -57,8 +57,6 @@ RUN  apk add --update \
         php5-imap \
         php5-soap \
         php5-memcache \
-        php5-redis@testing \
-        php5-xdebug@community \
         php5-xsl \
         php5-ldap \
         php5-bcmath \
