@@ -41,7 +41,7 @@ RUN apk --update add --no-cache --update \
     ttf-freefont \
     fontconfig \
     dbus \
-    php5-memcached;
+    php5-memcached
        
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
