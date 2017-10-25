@@ -15,39 +15,35 @@ RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 RUN echo $TIMEZONE > /etc/timezone
 
 
-# 软件包安装
-RUN apk update
-RUN apk add php5 \
+RUN apk --update add --no-cache --update \
+	nginx \
+	curl \
+	php5-cli \
+	php5-common \
 	php5-fpm \
+	php5-phar \
+	php5-pdo \
+	php5-json \
+	php5-openssl \
+	php5-mysql \
+	php5-pdo_mysql \
+	php5-mcrypt \
 	php5-opcache \
-	php5-intl \
-    php5-mcrypt \
-    php5-openssl \
-    php5-gmp \
-    php5-json \
-    php5-dom \
-    php5-pdo \
-    php5-zip \
-    php5-zlib \
-    php5-mysql \
-    php5-mysqli \
-    php5-bcmath \
-    php5-gd \
-    php5-xcache \
-    php5-pdo_mysql \
-    php5-gettext \
-    php5-xml \
-    php5-xmlreader \
-    php5-xmlrpc \
-    php5-bz2 \
-    php5-memcache \
-    php5-iconv \
-    php5-curl \
-    php5-ctype \
-    php5-phar \
-    php5-redis@testing \
-    php5-xdebug@community \
-    openssl
+	php5-sqlite3 \
+	php5-pdo_sqlite \
+	php5-ctype \
+	php5-zlib \
+	php5-curl \
+	php5-gd \
+	php5-xml \
+	php5-dom \
+  	supervisor \
+    xvfb \
+    ttf-freefont \
+    fontconfig \
+    dbus \
+    qt5-qtbase-dev \    
+    php5-memcached;
 
 # 从国内镜像安装composer，并配置成默认从国内镜像安装composer包
 RUN php -r "readfile('http://install.phpcomposer.com/installer');" | php -- --install-dir=/bin/ --filename=composer
