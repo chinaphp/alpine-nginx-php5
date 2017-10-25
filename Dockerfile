@@ -14,7 +14,7 @@ RUN apk add tzdata
 RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 RUN echo $TIMEZONE > /etc/timezone
 
-apk add --update \
+   apk add --update \
         git \
         nginx \
         curl \
