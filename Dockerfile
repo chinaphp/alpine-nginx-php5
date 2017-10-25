@@ -32,7 +32,7 @@ RUN apk --update add --no-cache --update \
 	php5-sqlite3 \
 	php5-pdo_sqlite;
 
-	apk add --no-cache --update \
+RUN	apk add --no-cache --update \
 	php5-ctype \
 	php5-zlib \
 	php5-curl \
