@@ -1,6 +1,15 @@
 FROM alpine:3.4
 MAINTAINER  Coffee Z <chinaphp.com@gmail.com>
 
+# Let's start
+RUN apk update && \
+    apk upgrade
+
+# Misc Packages
+RUN apk add bash curl git sed wget
+
+
+
 RUN apk --update add --no-cache --update \
 	nginx \
 	curl \
