@@ -30,7 +30,9 @@ RUN apk --update add --no-cache --update \
 	php5-mcrypt \
 	php5-opcache \
 	php5-sqlite3 \
-	php5-pdo_sqlite \
+	php5-pdo_sqlite;
+
+	apk add --no-cache --update \
 	php5-ctype \
 	php5-zlib \
 	php5-curl \
@@ -41,8 +43,7 @@ RUN apk --update add --no-cache --update \
     xvfb \
     ttf-freefont \
     fontconfig \
-    dbus \
-    qt5-qtbase-dev \    
+    dbus \	    
     php5-memcached;
 
 # 从国内镜像安装composer，并配置成默认从国内镜像安装composer包
