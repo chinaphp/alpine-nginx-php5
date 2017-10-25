@@ -1,7 +1,6 @@
 FROM alpine:3.4
 MAINTAINER  Coffee Z <chinaphp.com@gmail.com>
 
-
 RUN apk update && apk upgrade
 
 #时区配置
@@ -33,6 +32,7 @@ RUN apk --update add --no-cache --update \
 	php5-gd \
 	php5-xml \
 	php5-dom \
+	php5-memcache \
   	supervisor \
     xvfb \
     ttf-freefont \
@@ -81,7 +81,7 @@ mkdir /run/nginx
 
 WORKDIR /apps
 
-VOLUME /apps
+VOLUME /var/www/html
 
 
 RUN rm /etc/nginx/nginx.conf
