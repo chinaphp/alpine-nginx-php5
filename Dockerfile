@@ -37,7 +37,13 @@ RUN apk --update add --no-cache --update \
     ttf-freefont \
     fontconfig \
     dbus \
-    php5-memcached
+    qt5-qtbase-dev; \
+    apk add --no-cache \
+            --update \
+            --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ \
+            --allow-untrusted \
+    wkhtmltopdf \
+    php5-memcached;
        
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
