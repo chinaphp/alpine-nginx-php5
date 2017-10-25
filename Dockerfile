@@ -10,6 +10,7 @@ RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 RUN echo $TIMEZONE > /etc/timezone
 
 RUN apk --update add --no-cache --update \
+    bash \
 	nginx \
 	curl \
 	php5-cli \
