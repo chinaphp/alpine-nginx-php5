@@ -2,9 +2,9 @@ FROM alpine:latest
 MAINTAINER  Coffee Z <chinaphp.com@gmail.com>
 
 # 换为国内镜像，以加速docker image制作速度，非中国镜内用户请注释掉下一行
-RUN echo 'http://mirrors.aliyun.com/alpine/latest-stable/main' > /etc/apk/repositories
-RUN echo '@community http://mirrors.aliyun.com/alpine/latest-stable/community' >> /etc/apk/repositories
-RUN echo '@testing http://mirrors.aliyun.com/alpine/edge/testing' >> /etc/apk/repositories
+#RUN echo 'http://mirrors.aliyun.com/alpine/latest-stable/main' > /etc/apk/repositories
+#RUN echo '@community http://mirrors.aliyun.com/alpine/latest-stable/community' >> /etc/apk/repositories
+#RUN echo '@testing http://mirrors.aliyun.com/alpine/edge/testing' >> /etc/apk/repositories
 
 RUN apk update && apk upgrade
 
@@ -14,37 +14,55 @@ RUN apk add tzdata
 RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
 RUN echo $TIMEZONE > /etc/timezone
 
+apk add --update \
+        git \
+        nginx \
+        curl \
+        &&\
 
-RUN apk --update add --no-cache --update \
-	nginx \
-	curl \
-	php5-cli \
-	php5-common \
-	php5-fpm \
-	php5-phar \
-	php5-pdo \
-	php5-json \
-	php5-openssl \
-	php5-mysql \
-	php5-pdo_mysql \
-	php5-mcrypt \
-	php5-opcache \
-	php5-sqlite3 \
-	php5-pdo_sqlite;
 
-RUN	apk add --no-cache --update \
-	php5-ctype \
-	php5-zlib \
-	php5-curl \
-	php5-gd \
-	php5-xml \
-	php5-dom \
-  	supervisor \
-    xvfb \
-    ttf-freefont \
-    fontconfig \
-    dbus \	    
-    php5-memcached;
+ # Install PHP packages
+    apk add --update \
+        php5 \
+        php5-common \
+        php5-cli \
+        php5-fpm \
+        php5-opcache \
+        php5-xml \
+        php5-ctype \
+        php5-ftp \
+        php5-gd \
+        php5-json \
+        php5-posix \
+        php5-curl \
+        php5-dom \
+        php5-pdo \
+        php5-pdo_mysql \
+        php5-sockets \
+        php5-zlib \
+        php5-mcrypt \
+        php5-pcntl \
+        php5-mysql \
+        php5-mysqli \
+        php5-sqlite3 \
+        php5-bz2 \
+        php5-pear \
+        php5-exif \
+        php5-phar \
+        php5-openssl \
+        php5-posix \
+        php5-zip \
+        php5-calendar \
+        php5-iconv \
+        php5-imap \
+        php5-soap \
+        php5-memcache \
+        php5-redis@testing \
+        php5-xdebug@community \
+        php5-xsl \
+        php5-ldap \
+        php5-bcmath \
+        && \
 
 # 从国内镜像安装composer，并配置成默认从国内镜像安装composer包
 RUN php -r "readfile('http://install.phpcomposer.com/installer');" | php -- --install-dir=/bin/ --filename=composer
