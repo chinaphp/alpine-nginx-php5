@@ -47,7 +47,6 @@ RUN apk --update add --no-cache --update \
     php5-ctype \
     php5-phar \
     php5-redis@testing \
-    php5-xdebug@community \
     openssl
 
 # 从国内镜像安装composer，并配置成默认从国内镜像安装composer包
