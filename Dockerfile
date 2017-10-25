@@ -28,6 +28,7 @@ RUN apk --update add --no-cache --update \
 	php5-sqlite3 \
 	php5-pdo_sqlite \
 	php5-ctype \
+	php5-intl \
 	php5-zlib \
 	php5-curl \
 	php5-gd \
