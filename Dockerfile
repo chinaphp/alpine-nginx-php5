@@ -59,8 +59,8 @@ RUN  apk add --update \
         php5-memcache \
         php5-xsl \
         php5-ldap \
-        php5-bcmath \
-        && \
+        php5-bcmath 
+       
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer; \
     chmod +x /usr/local/bin/composer;
