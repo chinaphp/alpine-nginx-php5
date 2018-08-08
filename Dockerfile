@@ -1,5 +1,5 @@
 FROM alpine:3.4
-MAINTAINER  Coffee Z <chinaphp.com@gmail.com>
+LABEL maintainer="Coffee Z <chinaphp.com@gmail.com>"
 
 RUN apk update && apk upgrade
 
