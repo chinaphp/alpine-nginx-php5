@@ -39,13 +39,13 @@ RUN apk --update add --no-cache --update \
     xvfb \
     ttf-freefont \
     fontconfig \
-    dbus \
-    qt5-qtbase-dev; \
-    apk add --no-cache \
-            --update \
-            --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ \
-            --allow-untrusted \
-    wkhtmltopdf;
+    dbus; 
+#     qt5-qtbase-dev; \
+#     apk add --no-cache \
+#             --update \
+#             --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ \
+#             --allow-untrusted \
+#     wkhtmltopdf;
     
        
 
