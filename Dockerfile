@@ -75,10 +75,12 @@ sed -i "s|max_execution_time =.*|max_execution_time = ${MAX_EXECUTION_TIME}|" /e
 sed -i "s|post_max_size =.*|max_file_uploads = ${PHP_MAX_POST}|" /etc/php5/php.ini && \
 sed -i "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/" /etc/php5/php.ini && \
 sed -i "s/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ALL/" /etc/php5/php.ini && \
-sed -i "s/display_errors = Off/display_errors = On/" /etc/php5/php.ini && \
+#sed -i "s/display_errors = Off/display_errors = On/" /etc/php5/php.ini && \
 sed -i "s/;catch_workers_output = yes/catch_workers_output = yes/" /etc/php5/php-fpm.conf && \
 sed -i "s/;error_log = php_errors.log/error_log = \/apps\/logs\/php_errors.log/" /etc/php5/php.ini && \
-mkdir /apps && \
+ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log && \
+apk del --quiet --no-cache --purge && rm -rf /var/cache/apk/* && \
+mkdir -p /apps/logs && \
 mkdir /run/nginx
 
 WORKDIR /apps
@@ -93,7 +95,6 @@ ADD conf/default.conf /etc/nginx/default.d/default.conf
 
 ADD conf/nginx-supervisor.ini /etc/supervisor/conf.d/nginx-supervisor.ini
 
-RUN rm -rf /var/cache/apk/*
 
 
 COPY conf/zzz-custom.ini /etc/php5/conf.d/
